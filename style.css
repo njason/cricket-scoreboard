@@ -1,1 +1,38 @@
-html{height:98%;-moz-user-select:-moz-none;-khtml-user-select:none;-webkit-user-select:none;text-align:center}body{font-size:7em}@media screen and (max-height:850px){body{font-size:2em}}@media screen and (max-height:350px){body{font-size:1em}}div.cell{height:14%;border-style:solid;border-width:thin;text-align:center}div.pos{background-color:yellow}.maxHeight{height:100%}
+html {
+    height: 98%;
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    text-align: center
+}
+
+body {
+    font-size: 7em
+}
+
+@media screen and (max-height: 850px) {
+    body {
+        font-size:2em
+    }
+}
+
+@media screen and (max-height: 350px) {
+    body {
+        font-size:1em
+    }
+}
+
+div.cell {
+    height: 14%;
+    border-style: solid;
+    border-width: thin;
+    text-align: center
+}
+
+div.pos {
+    background-color: yellow
+}
+
+.maxHeight {
+    height: 100%
+}
