@@ -69,21 +69,21 @@ function numHits(average, stdDev, pointChoice) {
     var rawHit = (Math.random() * (low - high)) * 100;
     var hits;
     if (1 != rawHit) {
-        hits = Math.round((Math.random() * (low - high)) + high)
+        hits = Math.round((Math.random() * (low - high)) + high);
     } else {
         var highHit = Math.random() * 2;
         if (0 == highHit) {
-            hits = 0
+            hits = 0;
         } else {
             if ("B" == pointChoice) {
-                hits = 2
+                hits = 2;
             } else {
-                hits = 3
+                hits = 3;
             }
         }
     }
     if (0 > hits) {
-        hits = 0
+        hits = 0;
     }
     
     return hits;
