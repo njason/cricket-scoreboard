@@ -22,9 +22,9 @@ $(function() {
 });
 
 function clearHits() {
-    for (var a = 20; 15 <= a; --a) {
-        localStorage["ht1" + a] = "0";
-        localStorage["ht2" + a] = "0"
+    for (var i = 20; 15 <= i; --i) {
+        localStorage["ht1" + i] = "0";
+        localStorage["ht2" + i] = "0"
     }
     localStorage.ht1B = "0";
     localStorage.ht2B = "0"

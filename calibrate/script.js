@@ -4,7 +4,7 @@ var hitSequence = new Array();
 $(function() {
     $("div.hits").click(function() {
         if (!this.classList.contains("hits")) {
-            return
+            return;
         }
         hits[$("div#number").text()].push(parseInt(this.innerText));
         hitSequence.push($("div#number").text());
@@ -31,7 +31,7 @@ $(function() {
             case "B":
                 $("div#number").html("20");
                 $("div.nobull").toggleClass("hits");
-                break
+                break;
         }
     });
     $("div#undo").click(function() {
@@ -60,7 +60,7 @@ $(function() {
                 case "B":
                     $("div#number").html("15");
                     $("div.nobull").toggleClass("hits");
-                    break
+                    break;
             }
         }
     });
@@ -69,18 +69,18 @@ $(function() {
             if (0 == hits[hit].length) {
                 return
             }
-            var a = average(hits[hit]);
-            localStorage[settingsName + "a" + hit] = a.mean / 3;
-            localStorage[settingsName + "sd" + hit] = a.deviation
+            var avg = average(hits[hit]);
+            localStorage[settingsName + "a" + hit] = avg.mean / 3;
+            localStorage[settingsName + "sd" + hit] = avg.deviation;
         }
-        window.location = "../index.html"
+        window.location = "../index.html";
     })
 });
-average = function(d) {
-    var g = {mean: 0,variance: 0,deviation: 0}, e = d.length;
-    for (var b, f = 0, c = e; c--; f += d[c]) {
-    }
-    for (b = g.mean = f / e, c = e, f = 0; c--; f += Math.pow(d[c] - b, 2)) {
-    }
-    return g.deviation = Math.sqrt(g.variance = f / e), g
+average = function(pointHits) {
+    var avg = {mean: 0, variance: 0, deviation: 0}
+    var numHits = pointHits.length;
+    for (var i, totalHits = 0, hitIndex = numHits; hitIndex--; totalHits += pointHits[hitIndex]);
+    for (i = g.mean = totalHits / numHits, hitIndex = numHits, totalHits = 0; hitIndex--; totalHits += Math.pow(pointHits[hitIndex] - i, 2));
+    avg.deviation = Math.sqrt(avg.variance = totalHits / numHits);
+    return avg;
 };

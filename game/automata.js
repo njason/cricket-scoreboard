@@ -1,90 +1,91 @@
 var orderPreference = ["20", "19", "18", "17", "16", "15", "B"];
-function runPointLogic(a, f) {
-    var c = -1;
-    var e = -1;
-    var b = -1;
-    for (var d = 0; 7 > d; ++d) {
-        if (3 <= a[orderPreference[d]] && 3 > f[orderPreference[d]]) {
-            b = d;
-            break
+function runPointLogic(hits, oHits) {
+    var closeIndex = -1;
+    var defenceIndex = -1;
+    var pointIndex = -1;
+    for (var i = 0; 7 > i; ++i) {
+        if (3 <= hits[orderPreference[i]] && 3 > oHits[orderPreference[i]]) {
+            pointIndex = i;
+            break;
         } else {
-            if (3 > a[orderPreference[d]] && 3 > f[orderPreference[d]] && -1 == c) {
-                c = d
+            if (3 > hits[orderPreference[i]] && 3 > oHits[orderPreference[i]] && -1 == closeIndex) {
+                closeIndex = i;
             } else {
-                if (3 > a[orderPreference[d]] && 3 <= f[orderPreference[d]] && -1 == e) {
-                    e = d
+                if (3 > hits[orderPreference[i]] && 3 <= oHits[orderPreference[i]] && -1 == defenceIndex) {
+                    defenceIndex = i;
                 }
             }
         }
     }
-    if (-1 != b) {
-        return orderPreference[b]
+    if (-1 != pointIndex) {
+        return orderPreference[pointIndex];
     } else {
-        if (-1 != c) {
-            return orderPreference[c]
+        if (-1 != closeIndex) {
+            return orderPreference[closeIndex];
         } else {
-            if (-1 != e) {
-                return orderPreference[e]
+            if (-1 != defenceIndex) {
+                return orderPreference[defenceIndex];
             }
         }
     }
-    return 0
+    return 0;
 }
-function runCloseLogic(a, f) {
-    var c = -1;
-    var e = -1;
-    var b = -1;
-    for (var d = 0; 7 > d; ++d) {
-        if (3 > a[orderPreference[d]]) {
-            if (3 > f[orderPreference[d]]) {
-                e = d;
-                break
+function runCloseLogic(hits, oHits) {
+    var defenceIndex = -1;
+    var closeIndex = -1;
+    var pointIndex = -1;
+    for (var i = 0; 7 > i; ++i) {
+        if (3 > hits[orderPreference[i]]) {
+            if (3 > oHits[orderPreference[i]]) {
+                closeIndex = i;
+                break;
             } else {
-                if (-1 == c) {
-                    c = d
+                if (-1 == defenceIndex) {
+                    defenceIndex = i;
                 }
             }
         } else {
-            if (-1 == b && 3 <= f[orderPreference[d]]) {
-                b = d
+            if (-1 == pointIndex && 3 <= oHits[orderPreference[i]]) {
+                pointIndex = i;
             }
         }
     }
-    if (-1 != e) {
-        return orderPreference[e]
+    if (-1 != closeIndex) {
+        return orderPreference[closeIndex];
     } else {
-        if (-1 != c) {
-            return orderPreference[c]
+        if (-1 != defenceIndex) {
+            return orderPreference[defenceIndex];
         } else {
-            if (-1 != b) {
-                return orderPreference[b]
+            if (-1 != pointIndex) {
+                return orderPreference[pointIndex];
             }
         }
     }
-    return 0
+    return 0;
 }
-function numHits(g, c, f) {
-    var e = g + c * 2.5;
-    var b = g - c * 2.5;
-    var d = (Math.random() * (e - b)) * 100;
-    var a;
-    if (1 != d) {
-        a = Math.round((Math.random() * (e - b)) + b)
+function numHits(average, stdDev, pointChoice) {
+    var low = average + stdDev * 2.5;
+    var high = average - stdDev * 2.5;
+    var rawHit = (Math.random() * (low - high)) * 100;
+    var hits;
+    if (1 != rawHit) {
+        hits = Math.round((Math.random() * (low - high)) + high)
     } else {
-        var h = Math.random() * 2;
-        if (0 == h) {
-            a = 0
+        var highHit = Math.random() * 2;
+        if (0 == highHit) {
+            hits = 0
         } else {
-            if ("B" == f) {
-                a = 2
+            if ("B" == pointChoice) {
+                hits = 2
             } else {
-                a = 3
+                hits = 3
             }
         }
     }
-    if (0 > a) {
-        a = 0
+    if (0 > hits) {
+        hits = 0
     }
-    return a
+    
+    return hits;
 }
 ;

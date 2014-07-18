@@ -3,7 +3,7 @@ var compAvgs = new Array();
 var compStdDev = new Array();
 $(document).ready(function() {
     if (!loadCompParams("default")) {
-        defaultCompParams()
+        defaultCompParams();
     }
     $("[id^=t1]").addClass("userPositive");
     $("[id^=t2]").addClass("automata");
@@ -20,75 +20,75 @@ $(document).ready(function() {
             }
         } else {
             $("div#undoToggle").text("UNDO");
-            checkForEndGame()
+            checkForEndGame();
         }
         $("[id^=t1]").toggleClass("userNegative");
         $("[id^=t1]").toggleClass("userPositive");
         $("[id^=t2]").toggleClass("userNegative");
-        $("[id^=t2]").toggleClass("automata")
+        $("[id^=t2]").toggleClass("automata");
     });
     $("[id^=t1]").click(function() {
         if ("UNDO" == $("div#undoToggle").text()) {
             if (null == endGame) {
-                addHit(this)
+                addHit(this);
             } else {
-                reset()
+                reset();
             }
         } else {
-            removeHit(this)
+            removeHit(this);
         }
     });
     $("[id^=t2]").click(function() {
         if ("UNDO" == $("div#undoToggle").text()) {
             if (null == endGame) {
                 addComputerMarkState();
-                for (var a = 0; 3 > a; ++a) {
-                    straightLogic()
+                for (var i = 0; 3 > i; ++i) {
+                    straightLogic();
                 }
             } else {
-                reset()
+                reset();
             }
         } else {
-            restoreComputerMarkState()
+            restoreComputerMarkState();
         }
     })
 });
 function straightLogic() {
-    var b;
+    var pointChoice;
     if (parseInt($("div#teamOnePoints").text()) >= parseInt($("div#teamTwoPoints").text())) {
-        b = runPointLogic(t2MarkHits, t1MarkHits)
+        pointChoice = runPointLogic(t2MarkHits, t1MarkHits);
     } else {
-        b = runCloseLogic(t2MarkHits, t1MarkHits)
+        pointChoice = runCloseLogic(t2MarkHits, t1MarkHits);
     }
-    if (0 != b) {
-        var a = numHits(0.5, 0.2, b);
-        for (var c = 0; a > c; ++c) {
-            addHit(document.getElementById("t2" + b))
+    if (0 != pointChoice) {
+        var hits = numHits(0.5, 0.2, pointChoice);
+        for (var i = 0; hits > i; ++i) {
+            addHit(document.getElementById("t2" + pointChoice));
         }
     }
 }
 function addComputerMarkState() {
-    var a = new TeamState();
-    a.score = $("div#teamTwoPoints").text();
-    a.markHits = t2MarkHits.slice();
-    compMarkStates.push(a)
+    var newState = new TeamState();
+    newState.score = $("div#teamTwoPoints").text();
+    newState.markHits = t2MarkHits.slice();
+    compMarkStates.push(newState);
 }
 function restoreComputerMarkState() {
     if (0 < compMarkStates.length) {
-        var a = compMarkStates.pop();
-        $("div#teamTwoPoints").html(a.score);
-        t2MarkHits = a.markHits;
-        for (var b in t2MarkHits) {
-            if (3 <= t2MarkHits[b]) {
-                $("div#t2" + b).html("O")
+        var state = compMarkStates.pop();
+        $("div#teamTwoPoints").html(state.score);
+        t2MarkHits = state.markHits;
+        for (var number in t2MarkHits) {
+            if (3 <= t2MarkHits[number]) {
+                $("div#t2" + number).html("O");
             } else {
-                if (2 == t2MarkHits[b]) {
-                    $("div#t2" + b).html("X")
+                if (2 == t2MarkHits[number]) {
+                    $("div#t2" + number).html("X");
                 } else {
-                    if (1 == t2MarkHits[b]) {
-                        $("div#t2" + b).html("/")
+                    if (1 == t2MarkHits[number]) {
+                        $("div#t2" + number).html("/");
                     } else {
-                        $("div#t2" + b).html("")
+                        $("div#t2" + number).html("");
                     }
                 }
             }
@@ -109,35 +109,35 @@ function defaultCompParams() {
     compStdDev["17"] = parseFloat(DEFAULT_COMP_STDDEV);
     compStdDev["16"] = parseFloat(DEFAULT_COMP_STDDEV);
     compStdDev["15"] = parseFloat(DEFAULT_COMP_STDDEV);
-    compStdDev.B = parseFloat(DEFAULT_COMP_STDDEV)
+    compStdDev.B = parseFloat(DEFAULT_COMP_STDDEV);
 }
-function loadCompParams(a) {
-    compAvgs["20"] = localStorage[a + "a20"];
-    compAvgs["19"] = localStorage[a + "a19"];
-    compAvgs["18"] = localStorage[a + "a18"];
-    compAvgs["17"] = localStorage[a + "a17"];
-    compAvgs["16"] = localStorage[a + "a16"];
-    compAvgs["15"] = localStorage[a + "a15"];
-    compAvgs.B = localStorage[a + "aB"];
-    compStdDev["20"] = localStorage[a + "sd20"];
-    compStdDev["19"] = localStorage[a + "sd19"];
-    compStdDev["18"] = localStorage[a + "sd18"];
-    compStdDev["17"] = localStorage[a + "sd17"];
-    compStdDev["16"] = localStorage[a + "sd16"];
-    compStdDev["15"] = localStorage[a + "sd15"];
-    compStdDev.B = localStorage[a + "sdB"];
+function loadCompParams(label) {
+    compAvgs["20"] = localStorage[label + "a20"];
+    compAvgs["19"] = localStorage[label + "a19"];
+    compAvgs["18"] = localStorage[label + "a18"];
+    compAvgs["17"] = localStorage[label + "a17"];
+    compAvgs["16"] = localStorage[label + "a16"];
+    compAvgs["15"] = localStorage[label + "a15"];
+    compAvgs.B = localStorage[label + "aB"];
+    compStdDev["20"] = localStorage[label + "sd20"];
+    compStdDev["19"] = localStorage[label + "sd19"];
+    compStdDev["18"] = localStorage[label + "sd18"];
+    compStdDev["17"] = localStorage[label + "sd17"];
+    compStdDev["16"] = localStorage[label + "sd16"];
+    compStdDev["15"] = localStorage[label + "sd15"];
+    compStdDev.B = localStorage[label + "sdB"];
     for (num in compAvgs) {
         if (compAvgs[num] == null || compStdDev[num] == null) {
-            return false
+            return false;
         }
         compAvgs[num] = parseFloat(compAvgs[num]);
-        compStdDev[num] = parseFloat(compStdDev[num])
+        compStdDev[num] = parseFloat(compStdDev[num]);
     }
     return true
 }
 function TeamState() {
     this.score = "0";
-    this.markHits = new Array()
+    this.markHits = new Array();
 }
 function reset() {
     $("div.mark").text("");
@@ -151,12 +151,12 @@ function reset() {
     $("div.mark").removeAttr("style");
     for (hit in t1MarkHits) {
         t1MarkHits[hit] = 0;
-        t2MarkHits[hit] = 0
+        t2MarkHits[hit] = 0;
     }
     compMarkStates = new Array();
     if (null != endGame) {
         clearInterval(endGame);
-        endGame = null
+        endGame = null;
     }
 }
 ;
