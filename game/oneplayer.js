@@ -133,7 +133,7 @@ function loadCompParams(label) {
         compAvgs[num] = parseFloat(compAvgs[num]);
         compStdDev[num] = parseFloat(compStdDev[num]);
     }
-    return true
+    return true;
 }
 function TeamState() {
     this.score = "0";
