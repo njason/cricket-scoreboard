@@ -61,7 +61,7 @@ function straightLogic() {
         pointChoice = runCloseLogic(t2MarkHits, t1MarkHits);
     }
     if (0 != pointChoice) {
-        var hits = numHits(0.5, 0.2, pointChoice);
+        var hits = numHits(compAvgs[pointChoice], compStdDev[pointChoice], pointChoice);
         for (var i = 0; hits > i; ++i) {
             addHit(document.getElementById("t2" + pointChoice));
         }
