@@ -3,22 +3,22 @@ html {
     -moz-user-select: -moz-none;
     -khtml-user-select: none;
     -webkit-user-select: none;
-    text-align: center
+    text-align: center;
 }
 
 body {
-    font-size: 7em
+    font-size: 7em;
 }
 
 @media screen and (max-height: 850px) {
     body {
-        font-size:2em
+        font-size: 2em;
     }
 }
 
 @media screen and (max-height: 350px) {
     body {
-        font-size:1em
+        font-size: 1em;
     }
 }
 
@@ -26,13 +26,13 @@ div.cell {
     height: 14%;
     border-style: solid;
     border-width: thin;
-    text-align: center
+    text-align: center;
 }
 
 div.pos {
-    background-color: yellow
+    background-color: yellow;
 }
 
 .maxHeight {
-    height: 100%
+    height: 100%;
 }
