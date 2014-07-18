@@ -67,7 +67,7 @@ $(function() {
     $("div#done").click(function() {
         for (hit in hits) {
             if (0 == hits[hit].length) {
-                return
+                return;
             }
             var avg = average(hits[hit]);
             localStorage[settingsName + "a" + hit] = avg.mean / 3;
