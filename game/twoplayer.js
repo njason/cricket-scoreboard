@@ -9,24 +9,24 @@ $(document).ready(function() {
             if (null != endGame) {
                 clearInterval(endGame);
                 endGame = null;
-                $("div.mark").removeAttr("style")
+                $("div.mark").removeAttr("style");
             }
         } else {
             $("div#undoToggle").text("UNDO");
-            checkForEndGame()
+            checkForEndGame();
         }
         $("div.mark").toggleClass("userNegative");
-        $("div.mark").toggleClass("userPositive")
+        $("div.mark").toggleClass("userPositive");
     });
     $("div.mark").click(function() {
         if ("UNDO" == $("div#undoToggle").text()) {
             if (null == endGame) {
-                addHit(this)
+                addHit(this);
             } else {
-                reset()
+                reset();
             }
         } else {
-            removeHit(this)
+            removeHit(this);
         }
     })
 });
@@ -42,11 +42,11 @@ function reset() {
     $("div.mark").removeAttr("style");
     for (hit in t1MarkHits) {
         t1MarkHits[hit] = 0;
-        t2MarkHits[hit] = 0
+        t2MarkHits[hit] = 0;
     }
     if (null != endGame) {
         clearInterval(endGame);
-        endGame = null
+        endGame = null;
     }
 }
 ;
