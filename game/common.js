@@ -120,7 +120,7 @@ function removeHit(point) {
                 } else {
                     $(point).text("X");
                     t1MarkHits[pointIndex] = 2;
-                    localStorage["ht1" + pointIndex] = 2
+                    localStorage["ht1" + pointIndex] = 2;
                 }
                 break;
             case "X":
@@ -139,17 +139,17 @@ function removeHit(point) {
             case "O":
                 if (3 < t2MarkHits[pointIndex]) {
                     if ("B" == pointIndex) {
-                        score = 25
+                        score = 25;
                     } else {
-                        score = parseInt(pointIndex)
+                        score = parseInt(pointIndex);
                     }
                     --t2MarkHits[pointIndex];
                     localStorage["ht2" + pointIndex] = t2MarkHits[pointIndex];
-                    $("#teamTwoPoints").text(parseInt($("#teamTwoPoints").text()) - score)
+                    $("#teamTwoPoints").text(parseInt($("#teamTwoPoints").text()) - score);
                 } else {
                     $(point).text("X");
                     t2MarkHits[pointIndex] = 2;
-                    localStorage["ht2" + pointIndex] = 2
+                    localStorage["ht2" + pointIndex] = 2;
                 }
                 break;
             case "X":
