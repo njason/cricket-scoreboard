@@ -1,32 +1,32 @@
 html {
-    height: 98%
+    height: 98%;
 }
 
 body {
     height: 100%;
-    font-size: 7em
+    font-size: 7em;
 }
 
 @media screen and (max-height: 850px) {
     body {
-        font-size:3em
+        font-size: 3em;
     }
 }
 
 @media screen and (max-height: 350px) {
     body {
-        font-size:1em
+        font-size: 1em;
     }
 }
 
 div#header {
     font-size: .7em;
-    height: 16.6666%
+    height: 16.6666%;
 }
 
 @media screen and (max-width: 800px) {
     div#header {
-        font-size:.3em
+        font-size: .3em;
     }
 }
 
@@ -40,13 +40,13 @@ div.hcell {
     line-height: 1em;
     -moz-user-select: -moz-none;
     -khtml-user-select: none;
-    -webkit-user-select: none
+    -webkit-user-select: none;
 }
 
 div.column {
     float: left;
     width: 50%;
-    height: 83.3333%
+    height: 83.3333%;
 }
 
 div.cell {
@@ -57,17 +57,17 @@ div.cell {
     line-height: 1em;
     -moz-user-select: -moz-none;
     -khtml-user-select: none;
-    -webkit-user-select: none
+    -webkit-user-select: none;
 }
 
 div.hits {
-    background-color: yellow
+    background-color: yellow;
 }
 
 div#undo {
-    background-color: red
+    background-color: red;
 }
 
 div#done {
-    background-color: blue
+    background-color: blue;
 }
